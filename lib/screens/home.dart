@@ -34,8 +34,7 @@ class HomePage extends StatelessWidget {
               SeasonCard(
                 image: 'wallpaper2.jpg',
                 season: '2ª Temporada',
-                color: Color(0xffe67e22),
-                seasonNumber: 'S02',
+                color: Color(0xffB53471),
                 icon: 'morty1.svg',
               ),
             ],

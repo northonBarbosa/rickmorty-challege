@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rickmorty/screens/season.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SeasonCard extends StatelessWidget {
   const SeasonCard({
@@ -57,13 +58,25 @@ class SeasonCard extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 15, horizontal: 5,),
-                child: AutoSizeText(
-                  season,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey[50],
-                  ),
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5,),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AutoSizeText(
+                      season,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey[50],
+                      ),
+                    ),
+                    Hero(
+                      tag: 'icon$seasonNumber',
+                      child: SvgPicture.asset(
+                        'assets/icons/$icon',
+                        height: screenHeight * 0.04,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

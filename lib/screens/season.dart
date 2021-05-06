@@ -45,9 +45,12 @@ class Season extends StatelessWidget {
                   height: 45,
                 ),
                 SizedBox(width: 20),
-                SvgPicture.asset(
-                  'assets/icons/$icon',
-                  height: 70,
+                Hero(
+                  tag: 'icon$seasonNumber',
+                  child: SvgPicture.asset(
+                    'assets/icons/$icon',
+                    height: 70,
+                  ),
                 ),
                 SizedBox(width: 20),
                 SvgPicture.asset(
