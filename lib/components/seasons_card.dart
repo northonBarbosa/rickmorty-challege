@@ -37,11 +37,24 @@ class SeasonCard extends StatelessWidget {
           height: screenHeight * 0.2,
           padding: EdgeInsets.all(5),
           margin: EdgeInsets.fromLTRB(10, 5, 5, 10),
-          color: color,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                  color: Color(0xff35485D).withOpacity(0.5),
+                  spreadRadius: 3,
+                  blurRadius: 5,
+                  offset: Offset(0, 6)),
+            ],
+          ),
           child: Column(
             children: [
-              Image.asset(
-                'assets/images/$image',
+              ClipRRect(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+                child: Image.asset(
+                  'assets/images/$image',
+                ),
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 15, horizontal: 5,),
