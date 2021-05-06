@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rickmorty/screens/season.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class SeasonCard extends StatelessWidget {
   const SeasonCard({
@@ -42,12 +43,14 @@ class SeasonCard extends StatelessWidget {
               Image.asset(
                 'assets/images/$image',
               ),
-              SizedBox(height: 15),
-              Text(
-                season,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey[50],
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 15, horizontal: 5,),
+                child: AutoSizeText(
+                  season,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey[50],
+                  ),
                 ),
               ),
             ],
