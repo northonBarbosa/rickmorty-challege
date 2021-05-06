@@ -37,7 +37,7 @@ class AllEpisodesButton extends StatelessWidget {
           'Todos os Episódios',
           style: TextStyle(
             color: Colors.grey[100],
-            fontSize: 30,
+            fontSize: 22,
             fontWeight: FontWeight.bold,
             shadows: [
               Shadow(

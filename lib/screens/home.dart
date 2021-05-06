@@ -6,6 +6,8 @@ import 'package:flutter_rickmorty/components/seasons_card.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBarContent(
         title: 'Home',
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
         children: [
           SizedBox(height: 10),
           Container(
-            width: 180,
+            width: screenWidth * 0.60,
             child: Image.asset('assets/images/theappdimension.png'),
           ),
           Row(
