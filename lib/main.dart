@@ -18,7 +18,8 @@ void main() async {
     GraphQLProvider(
       client: client,
       child: MaterialApp(
-        title: 'R&M - The App Dimension',
+        title: 'The App Dimension',
+        color: Color(0xff27ae60),
         home: HomePage(),
       ),
     ),
