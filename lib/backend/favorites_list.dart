@@ -30,7 +30,7 @@ class _FavoritesListState extends State<FavoritesList> {
   Future refreshEpisodes() async {
     setState(() => isLoading = true);
 
-    this.episodes = await EpisodesDatabase.instance.readAllEpisodes();
+    this.episodes = await EpisodesDatabase.instance.readAllFavoritesEpisodes('1');
 
     setState(() => isLoading = false);
   }

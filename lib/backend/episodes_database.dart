@@ -66,11 +66,15 @@ class EpisodesDatabase {
     }
   }
 
-  Future<List<Episode>> readAllEpisodes() async {
+  Future<List<Episode>> readAllFavoritesEpisodes(String favorite) async {
     final db = await instance.database;
 
     final orderBy = '${EpisodeFields.episodeId} ASC';
-    final result = await db.query(tableEpisodes, orderBy: orderBy);
+    final result = await db.query(
+      tableEpisodes,
+      where: '${EpisodeFields.favorite} = ?',
+      orderBy: orderBy,
+    );
 
     return result.map((json) => Episode.fromJson(json)).toList();
   }
