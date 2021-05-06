@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
                 image: 'wallpaper2.jpg',
                 season: '2ª Temporada',
                 color: Color(0xffB53471),
+                seasonNumber: 'S02',
                 icon: 'morty1.svg',
               ),
             ],
