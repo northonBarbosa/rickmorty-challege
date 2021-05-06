@@ -23,14 +23,14 @@ class AllEpisodesButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 18),
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         decoration: BoxDecoration(
-            color: Color(0xff3ae374),
+            color: Color(0xff009432),
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
-                color: Color(0xff32ff7e).withOpacity(0.5),
-                spreadRadius: 3,
-                blurRadius: 5,
-                offset: Offset(0, 5),
+                color: Color(0xff35485D).withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 6,
+                offset: Offset(0, 6),
               )
             ]),
         child: Text(
