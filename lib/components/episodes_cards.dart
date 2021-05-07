@@ -99,6 +99,7 @@ class _EpisodesCardState extends State<EpisodesCard> {
                     });
                   },
                 ),
+                
                 IconButton(
                   icon: Icon(
                     Icons.live_tv,
