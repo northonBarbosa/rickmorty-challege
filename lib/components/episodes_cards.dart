@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rickmorty/backend/episodes_database.dart';
+import 'package:flutter_rickmorty/model/episode_fields.dart';
 
 class EpisodesCard extends StatefulWidget {
   const EpisodesCard({
@@ -20,6 +22,7 @@ class EpisodesCard extends StatefulWidget {
 }
 
 class _EpisodesCardState extends State<EpisodesCard> {
+
   Color _iconColorFavorite = Colors.blueGrey[400];
   Color _iconColorWatched = Colors.blueGrey[400];
 
@@ -93,13 +96,16 @@ class _EpisodesCardState extends State<EpisodesCard> {
                   color: _iconColorFavorite,
                   onPressed: () {
                     setState(() {
-                      _iconColorFavorite == Colors.blueGrey[400]
-                          ? _iconColorFavorite = Colors.red
-                          : _iconColorFavorite = Colors.blueGrey[400];
+                      if (_iconColorFavorite == Colors.blueGrey[400]) {
+                        _iconColorFavorite = Colors.red;
+                        addFavorite();
+                      } else {
+                        _iconColorFavorite = Colors.blueGrey[400];
+                        deleteFavorite();
+                      }
                     });
                   },
                 ),
-                
                 IconButton(
                   icon: Icon(
                     Icons.live_tv,
@@ -121,4 +127,22 @@ class _EpisodesCardState extends State<EpisodesCard> {
       ),
     );
   }
+
+  Future addFavorite() async {
+    final episode = Episode(
+      episodeId: widget.id,
+      title: widget.episodeTitle,
+      episodeNumber: widget.episodeNumber,
+      airDate: widget.episodeDate,
+      characters: widget.episodeCharacters,
+      favorite: true,
+      watched: true,
+    );
+
+    print('ok');
+
+    await EpisodesDatabase.instance.create(episode);
+  }
+
+  Future deleteFavorite() async {}
 }

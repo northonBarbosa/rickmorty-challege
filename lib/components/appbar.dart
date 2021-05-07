@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rickmorty/screens/favorites.dart';
 import 'package:flutter_rickmorty/screens/search.dart';
 
 class AppBarContent extends StatelessWidget implements PreferredSizeWidget {
@@ -30,7 +31,14 @@ class AppBarContent extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           icon: Icon(Icons.favorite_border),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return Favorites();
+            }),
+          );
+          },
         ),
       ],
     );

@@ -20,13 +20,20 @@ class EpisodesDatabase {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await openDatabase(path,
+        version: 2, onCreate: _createDB, onUpgrade: _onUpgrade);
+  }
+
+  void _onUpgrade(Database db, int oldVersion, int newVersion) {
+    if (oldVersion < newVersion) {
+      db.execute("ALTER TABLE $tableEpisodes ALTER COLUMN favorite TEXT");
+    }
   }
 
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final boolType = 'BOOLEAN NOT NULL';
-    final textType = 'TEXT NOT NULL';
+    final textType = 'TEXT';
 
     await db.execute('''
       CREATE TABLE $tableEpisodes(
@@ -36,8 +43,8 @@ class EpisodesDatabase {
         ${EpisodeFields.episodeNumber} $textType,
         ${EpisodeFields.airDate} $textType,
         ${EpisodeFields.characters} $textType,
-        ${EpisodeFields.favorite} $textType,
-        ${EpisodeFields.watched} $boolType,
+        ${EpisodeFields.favorite} $boolType,
+        ${EpisodeFields.watched} $boolType
       )
     ''');
   }
@@ -66,13 +73,12 @@ class EpisodesDatabase {
     }
   }
 
-  Future<List<Episode>> readAllFavoritesEpisodes(String favorite) async {
+  Future<List<Episode>> readAllFavoritesEpisodes() async {
     final db = await instance.database;
 
-    final orderBy = '${EpisodeFields.episodeId} ASC';
+    final orderBy = '${EpisodeFields.id} ASC';
     final result = await db.query(
       tableEpisodes,
-      where: '${EpisodeFields.favorite} = ?',
       orderBy: orderBy,
     );
 
